@@ -8,6 +8,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import com.alvin.DrawViewDemo.draw.*;
+import com.alvin.DrawViewDemo.util.DensityUtil;
 
 /**
  * Created by Alvin on 2015/5/14.
@@ -18,6 +19,7 @@ public class MySurfaceView extends SurfaceView implements Callback{
     public boolean IsDirty=true;
     private float x,y;//用来存点击时的坐标
     private float lastX,lastY;//上一次点的坐标
+    private Context context;
 
     public MySurfaceView(Context context) {
         this(context, null);
@@ -29,6 +31,7 @@ public class MySurfaceView extends SurfaceView implements Callback{
 
     public MySurfaceView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        this.context = context;
         this.getHolder().addCallback(this);
     }
     public void DrawSurface(){
@@ -41,32 +44,32 @@ public class MySurfaceView extends SurfaceView implements Callback{
 
     public void DrawData(Canvas canvas){
         // 长方形
-        RectF rectF = new RectF(10,30,100,140);
-        RectF rectF1 = new RectF(10,20,110,160);
+        RectF rectF = new RectF(DensityUtil.dip2px(context,10),DensityUtil.dip2px(context,30),DensityUtil.dip2px(context,100),DensityUtil.dip2px(context,140));
+        RectF rectF1 = new RectF(DensityUtil.dip2px(context,10),DensityUtil.dip2px(context,20),DensityUtil.dip2px(context,110),DensityUtil.dip2px(context,160));
         graphicBase = new BaseRectangle(rectF,rectF1);
         graphicBase.Draw(canvas,x,y);
 
         // 圆
-        rectF = new RectF(120,30,240,180);
-        rectF1 = new RectF(120,20,260,200);
+        rectF = new RectF(DensityUtil.dip2px(context,120),DensityUtil.dip2px(context,30),DensityUtil.dip2px(context,240),DensityUtil.dip2px(context,180));
+        rectF1 = new RectF(DensityUtil.dip2px(context,120),DensityUtil.dip2px(context,20),DensityUtil.dip2px(context,260),DensityUtil.dip2px(context,200));
         graphicBase = new BaseCircle(rectF,rectF1);
         graphicBase.Draw(canvas,x,y);
 
         // 三角形
-        rectF = new RectF(10,130,130,240);
-        rectF1 = new RectF(10,120,140,260);
+        rectF = new RectF(DensityUtil.dip2px(context,10),DensityUtil.dip2px(context,130),DensityUtil.dip2px(context,130),DensityUtil.dip2px(context,240));
+        rectF1 = new RectF(DensityUtil.dip2px(context,10),DensityUtil.dip2px(context,120),DensityUtil.dip2px(context,140),DensityUtil.dip2px(context,260));
         graphicBase = new BaseTriangle(rectF,rectF1);
         graphicBase.Draw(canvas,x,y);
 
         // 正方形
-        rectF = new RectF(10,250,140,380);
-        rectF1 = new RectF(10,260,150,400);
+        rectF = new RectF(DensityUtil.dip2px(context,10),DensityUtil.dip2px(context,250),DensityUtil.dip2px(context,140),DensityUtil.dip2px(context,380));
+        rectF1 = new RectF(DensityUtil.dip2px(context,10),DensityUtil.dip2px(context,260),DensityUtil.dip2px(context,150),DensityUtil.dip2px(context,400));
         graphicBase = new BaseRectangle(rectF,rectF1);
         graphicBase.Draw(canvas,x,y);
 
         // 圆角矩形
-        rectF = new RectF(150,250,240,400);
-        rectF1 = new RectF(150,260,240,420);
+        rectF = new RectF(DensityUtil.dip2px(context,150),DensityUtil.dip2px(context,250),DensityUtil.dip2px(context,240),DensityUtil.dip2px(context,400));
+        rectF1 = new RectF(DensityUtil.dip2px(context,150),DensityUtil.dip2px(context,260),DensityUtil.dip2px(context,240),DensityUtil.dip2px(context,420));
         graphicBase = new BaseRoundRect(rectF,rectF1);
         graphicBase.Draw(canvas,x,y);
 
